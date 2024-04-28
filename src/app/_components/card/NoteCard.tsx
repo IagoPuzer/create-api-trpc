@@ -2,6 +2,7 @@
 import { useState } from "react";
 import DeleteButton from "../buttons/DeleteButton";
 import ViewPost from "../modals/viewPost";
+import UpdatePost from "../modals/UpdatePost";
 
 interface Post {
   id: number;
@@ -15,9 +16,15 @@ interface NoteCardProps {
 
 export default function NoteCard({ post }: NoteCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
 
-  const handleCloseUpdateModal = () => {
+  const handleCloseModal = () => {
     setIsModalOpen(false);
+    setIsModalUpdateOpen(false);
+  };
+
+  const handleOpenUpdateModal = () => {
+    setIsModalUpdateOpen(true);
   };
 
   const handleViewPost = () => {
@@ -36,7 +43,10 @@ export default function NoteCard({ post }: NoteCardProps) {
           <p className="truncate">{post.description}</p>
           <div className="mt-6 flex justify-end gap-4">
             <DeleteButton postId={post.id} />
-            <button className="rounded-md bg-sky-100 p-2 text-black hover:bg-sky-300">
+            <button
+              className="rounded-md bg-sky-100 p-2 text-black hover:bg-sky-300"
+              onClick={handleOpenUpdateModal}
+            >
               Editar
             </button>
             <button
@@ -48,9 +58,10 @@ export default function NoteCard({ post }: NoteCardProps) {
           </div>
         </div>
       </div>
-      <ViewPost
-        isOpen={isModalOpen}
-        onClose={handleCloseUpdateModal}
+      <ViewPost isOpen={isModalOpen} onClose={handleCloseModal} post={post} />
+      <UpdatePost
+        isOpen={isModalUpdateOpen}
+        onClose={handleCloseModal}
         post={post}
       />
     </>
