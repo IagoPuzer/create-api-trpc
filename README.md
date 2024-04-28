@@ -28,7 +28,7 @@
 1. Clone o repositório para a sua máquina:
 
    ```bash
-   git clone git@github.com:IagoPuzer/TesteQuaVi.git
+   git@github.com:IagoPuzer/create-api-trpc.git
 
    ```
 
