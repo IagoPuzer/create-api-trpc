@@ -22,6 +22,7 @@ export default function UpdatePost({ isOpen, onClose, post }: UpdatePostProps) {
     ...post,
     id: post.id,
   });
+  const [error, setError] = useState<string>("");
 
   const postUpdate = api.post.updatePost.useMutation({
     onSuccess: () => {
@@ -42,10 +43,14 @@ export default function UpdatePost({ isOpen, onClose, post }: UpdatePostProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!updatedPost.name.trim() || !updatedPost.description.trim()) {
+      setError("Os campos de título e/ou descrição não podem estar vazios.");
+      return;
+    }
     if (updatedPost.id !== undefined) {
       postUpdate.mutate({ ...updatedPost, id: updatedPost.id });
     } else {
-      console.error("postId não está definido");
+      console.error("Id não está definido");
     }
   };
 
@@ -81,6 +86,7 @@ export default function UpdatePost({ isOpen, onClose, post }: UpdatePostProps) {
                 value={updatedPost.description}
                 onChange={handleChange}
               />
+              {error && <p className="p-4 text-red-500">{error}</p>}
               <div className="mt-4 flex justify-center gap-4">
                 <button
                   type="submit"
