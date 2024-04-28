@@ -28,14 +28,14 @@ export const postRouter = createTRPCRouter({
   updatePost: publicProcedure
     .input(
       z.object({
-        postId: z.number(),
+        id: z.number(),
         name: z.string().min(1),
         description: z.string().min(1),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.db.post.update({
-        where: { id: input.postId },
+        where: { id: input.id },
         data: {
           name: input.name,
           description: input.description,
