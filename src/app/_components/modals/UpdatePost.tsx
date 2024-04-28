@@ -43,14 +43,10 @@ export default function UpdatePost({ isOpen, onClose, post }: UpdatePostProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    postUpdate.mutate({ ...updatedPost, id: updatedPost.id });
     if (!updatedPost.name.trim() || !updatedPost.description.trim()) {
       setError("Os campos de título e/ou descrição não podem estar vazios.");
       return;
-    }
-    if (updatedPost.id !== undefined) {
-      postUpdate.mutate({ ...updatedPost, id: updatedPost.id });
-    } else {
-      console.error("Id não está definido");
     }
   };
 
