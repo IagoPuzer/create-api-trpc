@@ -1,29 +1,72 @@
-# Create T3 App
+<h1 align="center"> Desafio Quarto a Vista <h1>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+![Badge Finalizado](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=GREEN&style=for-the-badge)
 
-## What's next? How do I make an app with this?
+<h2>Descrição do projeto:<h2>
+<p>Projeto desenvolvido para a realização do teste prático para vaga de Desenvolvedor full-stack da empresa Quarto a Vista.</p>
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+<p align="center">
+ <img src="/public/NotesAPP.gif">
+</p>
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## :hammer: Funcionalidades do projeto
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- `Funcionalidade 1`:
+    <p>Criação de um banco SQLite com Prisma e criação de uma API utilizando a lib tRPC dentro do NextJS para que seja feito o consumo das informações do banco de dados<p>
 
-## Learn More
+- `Funcionalidade 2`:
+    <p>Criação de Note APP, onde o usuário pode criar novas notas, editar essas notas, excluir e visualizar as notas.<p>
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## :gear: Como rodar o projeto
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+**Pré-requisitos:**
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- Node.js instalado
 
-## How do I deploy this?
+**Passos:**
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+1. Clone o repositório para a sua máquina:
+
+   ```bash
+   git clone git@github.com:IagoPuzer/TesteQuaVi.git
+
+   ```
+
+2. Acesse o diretório do projeto:
+
+   ```bash
+   cd nome-do-projeto
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Comando para ver o banco SQLite:
+
+   ```bash
+   npx prisma studio
+   ```
+
+4.Execute o projeto:
+
+      ```bash
+    npm run dev
+
+```
+
+
+## 🛠️ Tecnologias utilizadas
+
+- `NextJS` - version: 14.2.2
+- `TypeScript` - version: ^5
+- `Prisma` - version: 5.12.1
+- `React` - version: 18
+- `Tailwind CSS` - version: 3.4.3
+- `NodeJS` - version: 20.3.1
+- `npm` - version: 9.6.7
+- `tanstack/react-query` - version ^5.25.0
+- `zod` - version: ^3.23.3
+```
