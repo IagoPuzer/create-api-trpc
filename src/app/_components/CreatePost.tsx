@@ -31,13 +31,13 @@ export function CreatePost() {
         placeholder="Título"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full rounded-md px-4 py-2 text-black"
+        className="mb-2 block w-full rounded border border-gray-300 bg-white p-2 text-black focus:outline-none"
       />
       <textarea
         placeholder="Descrição"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full rounded-md px-4 py-2 text-black"
+        className="mb-2 block h-40 w-full rounded border border-gray-300 bg-white p-2 text-black focus:outline-none"
       />
       <button
         type="submit"
