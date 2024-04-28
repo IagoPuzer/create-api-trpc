@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 
 import { Poppins } from "next/font/google";
+import { Toaster } from "sonner";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

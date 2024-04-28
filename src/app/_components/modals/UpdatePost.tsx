@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { api } from "~/trpc/react";
+import { toast } from "sonner";
 
 interface Post {
   id: number;
@@ -44,6 +45,7 @@ export default function UpdatePost({ isOpen, onClose, post }: UpdatePostProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     postUpdate.mutate({ ...updatedPost, id: updatedPost.id });
+    toast.success("Nota editada com sucesso");
     if (!updatedPost.name.trim() || !updatedPost.description.trim()) {
       setError("Os campos de título e/ou descrição não podem estar vazios.");
       return;

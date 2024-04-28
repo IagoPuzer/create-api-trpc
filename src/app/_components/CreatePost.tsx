@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 
 import { api } from "~/trpc/react";
 
@@ -22,6 +23,7 @@ export function CreatePost() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     createPost.mutate({ name, description });
+    toast.success("Nota criada com sucesso");
     if (!name.trim() || !description.trim()) {
       setError("Os campos de título e/ou descrição não podem estar vazios.");
       return;
