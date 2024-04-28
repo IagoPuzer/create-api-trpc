@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
-import DeleteButton from "../buttons/DeleteButton";
 import ViewPost from "../modals/viewPost";
 import UpdatePost from "../modals/UpdatePost";
+import { api } from "~/trpc/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface Post {
   id: number;
@@ -17,6 +19,22 @@ interface NoteCardProps {
 export default function NoteCard({ post }: NoteCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+  const router = useRouter();
+
+  const deletePost = api.post.deletePost.useMutation({
+    onSuccess: () => {
+      router.refresh();
+    },
+  });
+
+  const handleDelete = async () => {
+    try {
+      await deletePost.mutateAsync({ postId: post.id });
+      toast.error("Nota excluída");
+    } catch (error) {
+      console.error("Erro ao deletar post:", error);
+    }
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -42,7 +60,12 @@ export default function NoteCard({ post }: NoteCardProps) {
           </div>
           <p className="truncate">{post.description}</p>
           <div className="mt-6 flex justify-end gap-4">
-            <DeleteButton postId={post.id} />
+            <button
+              className="rounded-md bg-red-200 p-2 text-black hover:bg-red-300"
+              onClick={handleDelete}
+            >
+              Deletar
+            </button>
             <button
               className="rounded-md bg-sky-100 p-2 text-black hover:bg-sky-300"
               onClick={handleOpenUpdateModal}
