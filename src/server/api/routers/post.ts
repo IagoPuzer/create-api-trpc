@@ -25,6 +25,25 @@ export const postRouter = createTRPCRouter({
       return true;
     }),
 
+  updatePost: publicProcedure
+    .input(
+      z.object({
+        postId: z.number(),
+        name: z.string().min(1),
+        description: z.string().min(1),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.post.update({
+        where: { id: input.postId },
+        data: {
+          name: input.name,
+          description: input.description,
+        },
+      });
+      return true;
+    }),
+
   listPosts: publicProcedure.query(({ ctx }) => {
     return ctx.db.post.findMany();
   }),
