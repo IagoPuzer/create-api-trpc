@@ -28,23 +28,23 @@ export function CreatePost() {
     >
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Título"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full rounded-full px-4 py-2 text-black"
+        className="w-full rounded-md px-4 py-2 text-black"
       />
       <textarea
-        placeholder="Title"
+        placeholder="Descrição"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full rounded-full px-4 py-2 text-black"
+        className="w-full rounded-md px-4 py-2 text-black"
       />
       <button
         type="submit"
         className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
         disabled={createPost.isPending}
       >
-        {createPost.isPending ? "Submitting..." : "Submit"}
+        {createPost.isPending ? "Criando..." : "Criar"}
       </button>
     </form>
   );
