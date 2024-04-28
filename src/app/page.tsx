@@ -1,4 +1,4 @@
-import { CreatePost } from "~/app/_components/create-post";
+import { CreatePost } from "~/app/_components/CreatePost";
 import { api } from "~/trpc/server";
 import NoteCard from "./_components/card/NoteCard";
 
